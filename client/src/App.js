@@ -20,6 +20,7 @@ const App = () => (
             <Route
               path={routes.productScreen.path}
               component={React.lazy(routes.productScreen.component)}
+              exact
             />
           </Switch>
         </Container>
