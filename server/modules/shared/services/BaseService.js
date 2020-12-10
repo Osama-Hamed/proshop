@@ -22,6 +22,10 @@ class BaseService {
     return this.dbHandler.create(values);
   }
 
+  insertMany(values) {
+    return this.dbHandler.insertMany(values);
+  }
+
   update(conditions, keyValMap, options = {}) {
     return this.dbHandler.updateMany(conditions, keyValMap, options);
   }
@@ -34,8 +38,12 @@ class BaseService {
     this.dbHandler.updateOne(conditions, update);
   }
 
-  remove(conditions) {
-    return this.dbHandler.remove(conditions);
+  deleteOne(conditions) {
+    return this.dbHandler.deleteOne(conditions);
+  }
+
+  deleteMany(conditions) {
+    return this.dbHandler.deleteMany(conditions);
   }
 
   count(conditions) {

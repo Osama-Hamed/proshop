@@ -22,6 +22,10 @@ class BaseHandler {
     return this.model.create(values);
   }
 
+  insertMany(values) {
+    return this.model.insertMany(values);
+  }
+
   update(conditions, keyValMap, options = {}) {
     return this.model.updateMany(conditions, { $set: keyValMap }, options);
   }
@@ -42,8 +46,12 @@ class BaseHandler {
     this.model.updateOne(conditions, update);
   }
 
-  remove(conditions) {
-    return this.model.remove(conditions);
+  deleteOne(conditions) {
+    return this.model.deleteOne(conditions);
+  }
+
+  deleteMany(conditions) {
+    return this.model.deleteMany(conditions);
   }
 
   count(conditions) {

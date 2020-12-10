@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index"
+    "start": "nodemon index",
+    "data:import": "node data/seeder",
+    "data:destroy": "node data/seeder -d"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
