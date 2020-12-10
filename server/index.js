@@ -1,0 +1,39 @@
+const express = require('express');
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const helmet = require('helmet');
+const cors = require('cors');
+const { router } = require('./router');
+
+dotenv.config();
+
+const app = express();
+app.use(morgan('dev'));
+app.use(cors());
+app.use(helmet());
+app.use(bodyParser.json());
+router(app);
+
+const PORT = process.env.PORT || 4000;
+const NODE_ENV = process.env.NODE_ENV;
+const DB_CONNECTION_URL = process.env.DB_CONNECTION_URL;
+
+(async () => {
+  try {
+    await mongoose.connect(DB_CONNECTION_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+    });
+
+    console.log('===== Connected to database successfuly =====');
+  } catch (err) {
+    console.error(err);
+  }
+})();
+
+app.listen(PORT, () => {
+  console.log(`===== Listening on port ${PORT} in ${NODE_ENV} mode =====`);
+});
