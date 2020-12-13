@@ -10,8 +10,8 @@ class BaseService {
     return this.dbHandler.find(conditions);
   }
 
-  findById(videoId) {
-    return this.dbHandler.findById(videoId);
+  findById(id) {
+    return this.dbHandler.findById(id);
   }
 
   findOne(query) {

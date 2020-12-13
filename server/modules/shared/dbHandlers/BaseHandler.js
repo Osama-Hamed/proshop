@@ -10,8 +10,8 @@ class BaseHandler {
     return this.model.find(conditions);
   }
 
-  findById(videoId) {
-    return this.model.findById(videoId);
+  findById(id) {
+    return this.model.findById(id);
   }
 
   findOne(query) {
