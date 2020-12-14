@@ -7,8 +7,9 @@ const Loader = () => (
     style={{
       width: '100px',
       height: '100px',
-      margin: 'auto',
-      display: 'block',
+      position: 'fixed',
+      top: '50%',
+      left: '50%',
     }}
   >
     <span className='sr-only'>Loading...</span>
