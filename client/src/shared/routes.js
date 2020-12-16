@@ -5,4 +5,8 @@ export default {
     path: '/product/:id',
     component: () => import('../screens/ProductScreen'),
   },
+  cartScreen: {
+    path: '/cart/:id?',
+    component: () => import('../screens/CartScreen'),
+  },
 };
