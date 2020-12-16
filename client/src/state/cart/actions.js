@@ -17,3 +17,9 @@ export const fetchProductDetails = (id, qty) => async (dispatch, getState) => {
     console.log(err);
   }
 };
+
+export const removeFromCart = id => (dispatch, getState) => {
+  dispatch({ type: actionTypes.CART_REMOVE_ITEM, payload: id });
+
+  localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems));
+};

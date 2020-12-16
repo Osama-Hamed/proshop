@@ -26,7 +26,9 @@ const CartScreen = ({ match, location }) => {
     if (productId) dsipatch(cartActions.fetchProductDetails(productId, qty));
   }, [dsipatch, productId, qty]);
 
-  const removeFromCart = productId => {};
+  const removeFromCart = productId => {
+    dsipatch(cartActions.removeFromCart(productId));
+  };
 
   const onCheckout = () => {};
 
