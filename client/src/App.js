@@ -13,17 +13,17 @@ const App = () => (
         <Container>
           <Switch>
             <Route
-              path={routes.homeScreen.path}
+              path={routes.homeScreen.path()}
               component={React.lazy(routes.homeScreen.component)}
               exact
             />
             <Route
-              path={routes.productScreen.path}
+              path={routes.productScreen.path()}
               component={React.lazy(routes.productScreen.component)}
               exact
             />
             <Route
-              path={routes.cartScreen.path}
+              path={routes.cartScreen.path()}
               component={React.lazy(routes.cartScreen.component)}
               exact
             />

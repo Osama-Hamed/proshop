@@ -14,6 +14,7 @@ import Rating from '../components/Rating';
 import * as productDetailsActions from '../state/productDetails/actions';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
+import routes from '../shared/routes';
 
 const ProductScreen = ({ match, history }) => {
   const [qty, setQty] = useState(1);
@@ -26,11 +27,12 @@ const ProductScreen = ({ match, history }) => {
 
   const onQtyChange = e => setQty(e.target.value);
 
-  const addToCart = () => history.push(`/cart/${match.params.id}?qty=${qty}`);
+  const addToCart = () =>
+    history.push(routes.cartScreen.path(match.params.id, { qty }));
 
   return (
     <>
-      <Link className='btn btn-light my-3' to='/'>
+      <Link className='btn btn-light my-3' to={routes.homeScreen.path()}>
         Go Back
       </Link>
       {loading ? (
