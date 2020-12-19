@@ -16,13 +16,11 @@ const productDetailsSuccess = product => ({
 });
 
 export const fetchProductDetails = id => async dispatch => {
-  console.log(id);
   try {
     dispatch(productDetailsRequest());
     const {
       data: { product },
     } = await api.product.getProductById(id);
-    // console.log('=======================', product);
     dispatch(productDetailsSuccess(product));
   } catch (err) {
     dispatch(
