@@ -33,11 +33,18 @@ const Header = () => {
                   <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
                 </NavDropdown>
               ) : (
-                <LinkContainer to='/login'>
-                  <Nav.Link>
-                    <i className='fas fa-user'></i> Sign In
-                  </Nav.Link>
-                </LinkContainer>
+                <>
+                  <LinkContainer to={routes.loginScreen.path()}>
+                    <Nav.Link>
+                      <i className='fas fa-user'></i> Sign In
+                    </Nav.Link>
+                  </LinkContainer>
+                  {/* <LinkContainer to={routes.registrationScreen.path()}>
+                    <Nav.Link>
+                      <i className='fas fa-user'></i> Sign Up
+                    </Nav.Link>
+                  </LinkContainer> */}
+                </>
               )}
             </Nav>
           </Navbar.Collapse>

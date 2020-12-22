@@ -25,6 +25,7 @@ const apiRoutes = {
   },
   user: {
     login: () => `${API_ROOT}/user/login`,
+    register: () => `${API_ROOT}/user/register`,
   },
 };
 
@@ -36,5 +37,6 @@ export default {
   },
   user: {
     login: data => request.post(apiRoutes.user.login(), data),
+    register: data => request.post(apiRoutes.user.register(), data),
   },
 };

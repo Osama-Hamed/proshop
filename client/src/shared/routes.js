@@ -21,4 +21,8 @@ export default {
     path: () => `/login`,
     component: () => import('../screens/LoginScreen'),
   },
+  registrationScreen: {
+    path: () => `/register`,
+    component: () => import('../screens/RegistrationScreen'),
+  },
 };

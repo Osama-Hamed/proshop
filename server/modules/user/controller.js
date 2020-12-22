@@ -11,8 +11,6 @@ const { generateToken } = require('../shared/utils/helpers');
 const controller = {
   register: async (req, res) => {
     const { name, email, password } = req.body;
-    const userExisted = await userService.findOne({ email });
-    if (userExisted) throw new BadRequestError('User already exists');
     const salt = await bcrypt.genSalt(10);
     const encryptedPassword = await bcrypt.hash(password, salt);
     const user = await userService.create({
