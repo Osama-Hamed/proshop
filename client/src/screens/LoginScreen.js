@@ -52,7 +52,8 @@ const LoginScreen = ({ history }) => {
       </Form>
       <Row className='py-3'>
         <Col>
-          New Customer? <Link to='/register'>Register</Link>
+          New Customer?{' '}
+          <Link to={routes.registrationScreen.path()}>Register</Link>
         </Col>
       </Row>
     </FormContainer>

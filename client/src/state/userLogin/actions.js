@@ -8,7 +8,7 @@ const userLoginFail = err => ({
   payload: err,
 });
 
-const userLoginSuccess = user => ({
+export const userLoginSuccess = user => ({
   type: actionTypes.USER_LOGIN_SUCCESS,
   payload: user,
 });
