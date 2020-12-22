@@ -27,6 +27,11 @@ const App = () => (
               component={React.lazy(routes.cartScreen.component)}
               exact
             />
+            <Route
+              path={routes.loginScreen.path()}
+              component={React.lazy(routes.loginScreen.component)}
+              exact
+            />
           </Switch>
         </Container>
       </main>

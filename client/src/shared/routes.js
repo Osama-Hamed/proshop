@@ -17,4 +17,8 @@ export default {
       }`,
     component: () => import('../screens/CartScreen'),
   },
+  loginScreen: {
+    path: () => `/login`,
+    component: () => import('../screens/LoginScreen'),
+  },
 };
