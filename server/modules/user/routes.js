@@ -11,6 +11,13 @@ const mount = router => {
   );
   router.post('/login', controller.login);
   router.get('/profile', middlewares.authentication, controller.getUserProfile);
+  router.put(
+    '/profile',
+    middlewares.authentication,
+    validator.updateProfileRules(),
+    validator.updateProfile,
+    controller.updateUserProfile,
+  );
 
   return router;
 };

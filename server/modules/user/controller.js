@@ -1,28 +1,18 @@
 const bcrypt = require('bcryptjs');
-const _ = require('lodash');
 const userService = require('../shared/services/user');
-const {
-  UnauthorizedError,
-  NotFoundError,
-  BadRequestError,
-} = require('../shared/errors');
-const { generateToken } = require('../shared/utils/helpers');
+const { UnauthorizedError, NotFoundError } = require('../shared/errors');
+const { encryptPassword, getUser } = require('../shared/utils/helpers');
 
 const controller = {
   register: async (req, res) => {
     const { name, email, password } = req.body;
-    const salt = await bcrypt.genSalt(10);
-    const encryptedPassword = await bcrypt.hash(password, salt);
+    const encryptedPassword = await encryptPassword(password);
     const user = await userService.create({
       name,
       email,
       password: encryptedPassword,
     });
-    res.status(201).json({
-      user: _.merge(_.omit(user.toObject(), ['password']), {
-        token: generateToken(user._id),
-      }),
-    });
+    res.status(201).json({ user: getUser(user.toObject()) });
   },
 
   login: async (req, res) => {
@@ -33,19 +23,23 @@ const controller = {
       : false;
     if (!user || !matchPassword)
       throw new UnauthorizedError('Invalid Email or Password');
-    res.status(200).json({
-      user: _.merge(_.omit(user.toObject(), ['password']), {
-        token: generateToken(user._id),
-      }),
-    });
+    res.status(200).json({ user: getUser(user.toObject()) });
   },
 
   getUserProfile: async (req, res) => {
     const user = await userService.findById(req.user._id);
     if (!user) throw new NotFoundError('User not found');
-    res.status(200).json({
-      user: _.omit(user.toObject(), ['password']),
-    });
+    res.status(200).json({ user: getUser(user.toObject(), false) });
+  },
+
+  updateUserProfile: async (req, res) => {
+    const user = await userService.findById(req.user._id);
+    if (!user) throw new NotFoundError('User not found');
+    const { name, email, password } = req.body;
+    const updateData = { name: name || user.name, email: email || user.email };
+    if (password) updateData.password = await encryptPassword(password);
+    const updatedUser = await userService.updateById(user._id, updateData);
+    res.status(200).json({ user: getUser(updatedUser.toObject()) });
   },
 };
 

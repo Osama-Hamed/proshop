@@ -33,6 +33,7 @@ const DB_CONNECTION_URL = process.env.DB_CONNECTION_URL;
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
+      useFindAndModify: false,
     });
 
     console.log('===== Connected to database successfuly =====');
