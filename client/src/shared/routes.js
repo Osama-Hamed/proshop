@@ -25,4 +25,8 @@ export default {
     path: () => `/register`,
     component: () => import('../screens/RegistrationScreen'),
   },
+  profileScreen: {
+    path: () => `/profile`,
+    component: () => import('../screens/ProfileScreen'),
+  },
 };

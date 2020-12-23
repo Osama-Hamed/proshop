@@ -37,6 +37,11 @@ const App = () => (
               component={React.lazy(routes.registrationScreen.component)}
               exact
             />
+            <Route
+              path={routes.profileScreen.path()}
+              component={React.lazy(routes.profileScreen.component)}
+              exact
+            />
           </Switch>
         </Container>
       </main>

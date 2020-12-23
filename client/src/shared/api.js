@@ -14,8 +14,9 @@ const getConfig = () => {
 };
 
 const request = {
-  get: url => axios.get(url),
+  get: url => axios.get(url, getConfig()),
   post: (url, data) => axios.post(url, data, getConfig()),
+  put: (url, data) => axios.put(url, data, getConfig()),
 };
 
 const apiRoutes = {
@@ -26,6 +27,8 @@ const apiRoutes = {
   user: {
     login: () => `${API_ROOT}/user/login`,
     register: () => `${API_ROOT}/user/register`,
+    getUserProfile: () => `${API_ROOT}/user/profile`,
+    updateUserProfile: () => `${API_ROOT}/user/profile`,
   },
 };
 
@@ -38,5 +41,8 @@ export default {
   user: {
     login: data => request.post(apiRoutes.user.login(), data),
     register: data => request.post(apiRoutes.user.register(), data),
+    getUserProfile: () => request.get(apiRoutes.user.getUserProfile()),
+    updateUserProfile: data =>
+      request.put(apiRoutes.user.updateUserProfile(), data),
   },
 };

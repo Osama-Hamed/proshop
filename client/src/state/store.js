@@ -6,6 +6,8 @@ import { productDetailsReducer } from './productDetails/reducer';
 import { cartReducer } from './cart/reducer';
 import { userLoginReducer } from './userLogin/reducer';
 import { userRegistrationReducer } from './userRegistration/reducer';
+import { userProfileReducer } from './userProfile/reducer';
+import { userProfileUpdateReducer } from './userProfileUpdate/reducer';
 
 let cachedCartItems = localStorage.getItem('cartItems');
 cachedCartItems = cachedCartItems ? JSON.parse(cachedCartItems) : [];
@@ -18,6 +20,8 @@ const reducer = combineReducers({
   cart: cartReducer,
   userLogin: userLoginReducer,
   userRegistration: userRegistrationReducer,
+  userProfile: userProfileReducer,
+  userProfileUpdate: userProfileUpdateReducer,
 });
 const useLogger = process.env.NODE_ENV === 'development';
 const middlewares = useLogger

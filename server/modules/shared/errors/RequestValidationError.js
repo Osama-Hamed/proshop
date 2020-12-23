@@ -2,7 +2,7 @@ const CustomError = require('./CustomError');
 
 class RequestValidationError extends CustomError {
   constructor(errors) {
-    super(422, 'request validation error');
+    super(400, 'request validation error');
     this.errors = errors;
   }
 
